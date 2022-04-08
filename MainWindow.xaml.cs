@@ -38,7 +38,7 @@ namespace wordFileMerge
             }
 
             if (string.IsNullOrWhiteSpace(TargetDocFile.Text))
-                TargetDocFile.Text = "合并.docx";
+                TargetDocFile.Text = "合并.pdf";
 
 
             Dispatcher.Invoke(() =>
@@ -52,12 +52,12 @@ namespace wordFileMerge
 
                 string[] allWordDocuments = Directory.GetFiles(filePaths, "*.doc*", SearchOption.AllDirectories);
                 //Or if you want only SearchOptions.TopDirectoryOnly
-                if (!TargetDocFile.Text.EndsWith(".docx"))
+                if (!TargetDocFile.Text.EndsWith(".pdf"))
                 {
-                    TargetDocFile.Text += ".docx";
+                    TargetDocFile.Text += ".pdf";
                 }
                 string outputFileName = Path.Combine(filePaths, TargetDocFile.Text);
-                progressLabel.Content = WordDocHelper.Merge(allWordDocuments, outputFileName, true, UpdateProgress);
+                progressLabel.Content = WordDocHelper2.Merge(allWordDocuments, outputFileName, true, UpdateProgress);
             }
             finally
             {
